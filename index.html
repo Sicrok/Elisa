@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Elisa 💖</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background: radial-gradient(circle at top, #ff758c, #ff7eb3);
+    overflow-x:hidden;
+    overflow-y:auto;
+    color:#fff;
+}
+
+/* CONTENEDOR */
+.container{
+    max-width:900px;
+    margin:60px auto;
+    background:rgba(255,255,255,.18);
+    backdrop-filter: blur(12px);
+    border-radius:35px;
+    padding:50px;
+    text-align:center;
+    animation: aparecer 2s ease;
+    position:relative;
+    z-index:2;
+}
+
+h1{
+    font-size:3.5em;
+    text-shadow:0 0 30px #fff;
+}
+
+#typing{
+    font-size:1.4em;
+    line-height:1.9;
+    margin-top:30px;
+    min-height:300px;
+}
+
+.separador{
+    margin:50px 0;
+    font-size:28px;
+    letter-spacing:12px;
+    opacity:.9;
+}
+
+/* GALERÍA */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    margin-top:40px;
+}
+.gallery img{
+    width:100%;
+    height:440px;
+    object-fit:cover;
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,0,0,.5);
+    transition:.6s;
+}
+.gallery img:hover{
+    transform:scale(1.12);
+}
+
+/* BOTÓN SORPRESA */
+#botonSorpresa{
+    margin:60px auto 20px;
+    padding:18px 40px;
+    font-size:18px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    background: linear-gradient(135deg, #ff4d6d, #ff9a9e);
+    color:white;
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+    transition:.4s;
+}
+#botonSorpresa:hover{
+    transform:scale(1.1);
+}
+
+/* MENSAJE FINAL */
+#sorpresa{
+    display:none;
+    margin-top:40px;
+    font-size:1.5em;
+    line-height:1.9;
+    animation: aparecer 2s ease;
+}
+
+/* ANIMACIONES */
+@keyframes latir{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.35)}
+    100%{transform:scale(1)}
+}
+@keyframes aparecer{
+    from{opacity:0;transform:translateY(40px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+/* CORAZONES */
+.corazon{
+    position:fixed;
+    bottom:-50px;
+    font-size:24px;
+    animation: flotar linear infinite;
+    opacity:.9;
+    z-index:1;
+}
+@keyframes flotar{
+    to{
+        transform:translateY(-120vh) translateX(40px);
+        opacity:0;
+    }
+}
+
+.promesas{
+    list-style:none;
+    padding:0;
+    margin-top:30px;
+    font-size:1.3em;
+}
+.promesas li{
+    margin:15px 0;
+    opacity:0;
+    animation: aparecer 1.5s ease forwards;
+}
+.promesas li:nth-child(1){animation-delay:.3s}
+.promesas li:nth-child(2){animation-delay:.6s}
+.promesas li:nth-child(3){animation-delay:.9s}
+.promesas li:nth-child(4){animation-delay:1.2s}
+.promesas li:nth-child(5){animation-delay:1.5s}
+
+/* INTRO */
+#intro{
+    position:fixed;
+    inset:0;
+    background: radial-gradient(circle at top, #ff758c, #ff7eb3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+.intro-box{
+    background:rgba(255,255,255,.2);
+    backdrop-filter: blur(10px);
+    padding:50px;
+    border-radius:35px;
+    text-align:center;
+    animation: aparecer 1.5s ease;
+}
+
+.intro-box h1{
+    font-size:3em;
+    margin-bottom:20px;
+}
+
+.intro-box p{
+    font-size:1.2em;
+    line-height:1.8;
+}
+
+#btnInicio{
+    margin-top:30px;
+    padding:18px 45px;
+    font-size:18px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff4d6d,#ff9a9e);
+    color:white;
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+#btnInicio:hover{
+    transform:scale(1.1);
+}
+
+/* ESPACIO DEL CORAZÓN */
+.heart-space{
+    position: relative;
+    height: 120px; /* reserva espacio */
+    margin: 30px 0;
+}
+
+/* CORAZÓN */
+.heart{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 90px;
+    animation: latir-suave 1.6s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes latir-suave{
+    0%{transform: translate(-50%, -50%) scale(1)}
+    50%{transform: translate(-50%, -50%) scale(1.08)}
+    100%{transform: translate(-50%, -50%) scale(1)}
+}
+
+/* MÓVIL: SIN LATIDO */
+@media (max-width: 768px){
+    .heart{
+        animation: none;
+    }
+}
+
+/* ===============================
+   TEXTO LEGIBLE Y PROPORCIONAL
+   =============================== */
+
+:root{
+    /* PC */
+    --texto-base: 28px;
+    --linea-base: 1.6;
+}
+
+/* TEXTO GENERAL */
+body{
+    font-size: var(--texto-base);
+    line-height: var(--linea-base);
+}
+
+/* TEXTO PRINCIPAL */
+p,
+#typing,
+#sorpresa,
+.promesas,
+.promesas li{
+    font-size: 1em;
+    line-height: inherit;
+    max-width: 42ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* TÍTULOS */
+h1{ font-size: 2.3em; }
+h2{ font-size: 1.7em; }
+
+/* BOTONES */
+button{ font-size: 1.05em; }
+
+/* ===============================
+   MÓVIL (FUERTE Y CLARO)
+   =============================== */
+@media (max-width: 768px){
+    body{
+        font-size: 26px;   /* 🔥 AQUÍ ESTÁ LA CLAVE */
+        line-height: 2.05;
+    }
+
+    p,
+    #typing,
+    #sorpresa,
+    .promesas li{
+        max-width: 34ch;  /* Más cómodo para leer */
+    }
+
+    h1{ font-size: 2em; }
+    h2{ font-size: 1.5em; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+    <div class="intro-box">
+        <h1>Para ti, Elisa 💕</h1>
+        <p>
+            Esto no es una página.<br>
+            Es un pedacito de mi corazón,<br>
+            hecho solo para ti.
+        </p>
+        <button id="btnInicio">Comenzar 💖</button>
+    </div>
+</div>
+
+
+<!-- MÚSICA (ESTABLE Y FUNCIONAL) -->
+<audio id="musica" loop>
+    <source src="la-da-dee.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<h1>Elisa 💕</h1>
+
+<div id="typing"></div>
+
+<div class="separador">✦ ✧ ✦</div>
+
+<div class="heart-space">
+    <div class="heart">❤️</div>
+</div>
+
+<h2>Nuestros recuerdos 📸</h2>
+
+<div class="gallery">
+    <img src="foto1.jpg">
+    <img src="foto2.jpg">    
+</div>
+
+<h2>Por qué te amo 💗</h2>
+
+<p>
+Te amo porque eres real,  
+porque no finges,  
+porque incluso en tus días difíciles sigues siendo luz.
+</p>
+
+<p>
+Te amo porque contigo puedo ser yo,  
+sin miedo,  
+sin máscaras,  
+sin tener que explicar quién soy.
+</p>
+
+<p>
+Te amo porque haces que lo simple sea especial  
+y porque tu amor se siente como hogar.
+</p>
+
+<div class="separador">✦ ✧ ✦</div>
+
+<h2>Mis promesas para ti 🤍</h2>
+
+<ul class="promesas">
+    <li>Estar cuando sonríes y cuando no</li>
+    <li>Cuidarte incluso en silencio</li>
+    <li>Elegirte todos los días</li>
+    <li>Respetarte siempre</li>
+    <li>Amarte sin condiciones</li>
+</ul>
+
+<p style="margin-top:40px; font-size:1.3em;">
+Si llegaste hasta aquí…  
+es porque esto no fue solo una página,  
+fue mi corazón hablándote.
+</p>
+
+
+<button id="botonSorpresa" onclick="mostrarSorpresa()">
+    💌 Tengo algo más que decirte
+</button>
+
+<div id="sorpresa">
+    Elisa…
+
+    Si llegaste hasta aquí,
+    es porque sentiste cada palabra.
+
+    Quiero que sepas algo muy claro:
+    no estás sola,
+    nunca lo has estado,
+    y nunca lo estarás mientras yo exista.
+
+    Mi amor por ti no es un momento,
+    es una decisión,
+    es cuidado,
+    es compromiso.
+
+    Gracias por ser tú.
+    Gracias por existir.
+    Gracias por elegirme.
+
+    <br><br>
+<strong>Te amo con todo mi corazón 💖</strong><br>
+Siempre,<br>
+Hollman
+</div>
+
+</div>
+
+<script>
+/* INICIAR MÚSICA (100% ESTABLE) */
+let musicaIniciada=false;
+function iniciarMusica(){
+    if(musicaIniciada) return;
+    const m=document.getElementById("musica");
+    m.volume=0.7;
+    m.play().catch(()=>{});
+    musicaIniciada=true;
+}
+window.addEventListener("click", iniciarMusica);
+window.addEventListener("touchstart", iniciarMusica);
+window.addEventListener("keydown", iniciarMusica);
+
+/* TEXTO ESCRIBIÉNDOSE */
+const texto=`Elisa…
+
+Antes de ti, mis días pasaban sin darme cuenta.
+Vivía, sí… pero no me sentía así.
+
+Desde que llegaste,
+todo tiene sentido.
+Tu risa me salva,
+tu voz me calma,
+y tu amor me sostiene.
+
+Eres mi lugar seguro,
+mi paz en el caos,
+y la razón por la que sigo creyendo en el amor.
+
+No eres solo mi novia.
+Eres la persona que elijo todos los días.
+La que quiero cuidar,
+respetar,
+amar sin condiciones.
+
+Si alguna vez dudas de ti,
+recuerda esto:
+para mí eres única,
+valiosa,
+y profundamente amada.
+
+Y si el mundo pesa,
+aquí estaré.
+Siempre contigo.
+Siempre para ti.`;
+
+let i=0;
+const typing=document.getElementById("typing");
+function escribir(){
+    if(i<texto.length){
+        typing.innerHTML+=texto.charAt(i);
+        i++;
+        setTimeout(escribir,40);
+    }
+}
+//escribir();
+
+/* CORAZONES */
+function crearCorazon(){
+    const c=document.createElement("div");
+    c.className="corazon";
+    c.innerHTML=["❤️","💖","💕","💘"][Math.floor(Math.random()*4)];
+    c.style.left=Math.random()*100+"vw";
+    c.style.animationDuration=(6+Math.random()*6)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),12000);
+}
+setInterval(crearCorazon,300);
+
+/* BOTÓN SORPRESA */
+function mostrarSorpresa(){
+    document.getElementById("sorpresa").style.display="block";
+    document.getElementById("botonSorpresa").style.display="none";
+}
+
+btnInicio.addEventListener("click",()=>{
+    const musica = document.getElementById("musica");
+    musica.volume = 0.7;
+    musica.play();
+
+    document.getElementById("intro").style.display="none";
+
+   setTimeout(escribir,500); // ⬅️ AHORA empieza el texto
+});
+
+</script>
+
+<script>
+function crearLuz(){
+    const luz=document.createElement("div");
+    luz.style.position="fixed";
+    luz.style.width="8px";
+    luz.style.height="8px";
+    luz.style.borderRadius="50%";
+    luz.style.background="rgba(255,255,255,.8)";
+    luz.style.left=Math.random()*100+"vw";
+    luz.style.top="100vh";
+    luz.style.animation="flotar 15s linear";
+    luz.style.zIndex="0";
+    document.body.appendChild(luz);
+    setTimeout(()=>luz.remove(),15000);
+}
+setInterval(crearLuz,600);
+</script>
+
+</body>
+</html>
